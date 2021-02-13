@@ -35,10 +35,42 @@ MongoClient.connect(url, function(err, db) {
  
   dbo.collection("journals").insertOne(signUp, function(err, res) {
     if (err) throw err;
-    console.log("1 document inserted");
+    console.log("Sign-Up Info acquired!");
     db.close();
   });
 });
+
+
+
+})
+
+
+app.get("/loginInfo", (req, res)=>{
+
+  console.log(req.query.name);
+  console.log(req.query.password);
+
+
+
+
+  MongoClient.connect(url, function(err, db) {
+    
+  if (err) throw err;
+  var dbo = db.db("MentisCluster");
+  var query = { header: "signUp" };
+
+  dbo.collection("journals").find(query).toArray(function(err, result) {
+
+
+    if (err) throw err;
+    console.log(result);
+    db.close();
+
+
+  });
+});
+
+
 
 
 
