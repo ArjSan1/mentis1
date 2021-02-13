@@ -1,28 +1,39 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="login.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <h1 id="title">Login</h1>
-    <div id="nameForm">
-      <h1 id="namePrompt">Name: </h1>
-      <input type="text" id="nameInput">
-      <h1 id="submitName" onclick="submitName()">✅</h1>
 
-    </div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="contentDashboard.css" rel="stylesheet" type="text/css" />
+</head>
 
-     <div id="passwordForm">
-      <h1 id="passwordPrompt">Password: </h1>
-      <input type="text" id="passwordInput">
-      <h1 id="submitPassword" onclick="submitPassword()">✅</h1>
+<body>
+	<div id="flexTop">
+		<h1 id="mentis">Mentis.</h1>
+		<div id="navLinks">
+			<a href="/signup/signup.html">
+				<h1 id="signup">Signup</h1>
+			</a>
+      <a href="/login/login.html">
+			  <h1 id="login">Login</h1>
+      </a>
+		</div>
+	</div>
+	<div id="rcontainer">
+		<h1 id="Revolutionizing">Revolutionizing therapy one journal at a time.</h1>
+	</div>
 
-   </div>
-     <script src="/socket.io/socket.io.js"></script>
+	<div id="vectorDiv">
+		<img id="vector"
+    src="blackguy2.svg"
+    alt="blackguy"
+    height="700px"
+    width="700px" />
+  </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
 
-    <script src="login.js"></script>
+    <script src="contentDashboard.js"></script>
   </body>
 </html>

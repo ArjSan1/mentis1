@@ -21,6 +21,13 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log("A user has connected");
+    socket.on('dashboardUpdate', (name, therapistNum)=>{
+
+      //console.log(name);
+      //console.log(therapistNum);
+
+
+    })
     socket.on('userLogin', (name, password)=>{
 
             console.log(name);
@@ -42,17 +49,22 @@ io.on('connection', (socket) => {
 
     for (i=0; i<(Object.keys(result).length);i++){
 
-
+      
       let compareToPassword = result[i]["password"];
       let compareToName = result[i]["name"];
 
       if (name==compareToName && password==compareToPassword){
           console.log("Correct login info")
+          console.log("match found")
           let validity = "correct";
           let therapistNum = result[i]["therapistNum"]
           socket.emit("validity", validity, name, therapistNum);
+          break;
       }else{
-
+        /*let validity = "false";
+        name = null;
+        therapistNum = null;
+        socket.emit("validity", validity, name, therapistNum);*/
 
 
 

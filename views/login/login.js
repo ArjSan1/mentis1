@@ -11,6 +11,7 @@ let password;
 function submitName(){
    
   name = nameInput.value;
+  nameInput.value="";
   console.log(name);
   nameInput.style.display="none";
   submitNameButton.style.display = "none";
@@ -25,6 +26,7 @@ function submitName(){
 function submitPassword(){
 
   password = passwordInput.value;
+  passwordInput.value="";
   console.log(password);
   passwordInput.style.display="none";
   submitPasswordButton.style.display="none";
@@ -44,19 +46,28 @@ function submitPassword(){
 
 socket.on('validity', (validity, name, therapistNum)=>{
   console.log(validity);
-  console.log(name);
-  console.log(therapistNum);
   if (validity == "correct"){
       /*fetch('/redirect&validity='+validity)
       .then(response => response.json())
       .then(data => console.log(data));
       console.log("Information is valid ");*/
+      socket.emit('dashboardUpdate', name, therapistNum);
+
       window.location.replace("https://mentis.ibrahimshah.repl.co/contentDashboard/contentDashboard.html");
 
 
   }else{
+      title.innerHTML = "Login information is incorrect."
+        namePrompt.innerHTML="Please enter your name";
+        passwordPrompt.innerHTML = "Please enter your password";
+      nameInput.style.display="initial";
+      submitNameButton.style.display = "initial";
 
-    console.log("Login info invalid you whore")
+      passwordInput.style.display="initial";
+      submitPasswordButton.style.display="initial";
+
+
+
   }
 
 
