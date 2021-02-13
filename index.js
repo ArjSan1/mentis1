@@ -5,8 +5,10 @@ const server = http.createServer(app);
 
 app.use(express.static('views'));
 
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/landingPage/index.html');
+    res.sendFile(__dirname + '/views/index.html');
+
 });
 
 /*app.listen(8000, () => {
