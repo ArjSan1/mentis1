@@ -1,0 +1,94 @@
+*{
+  margin:0;
+  padding:0;
+}
+p{
+  margin:0;
+  padding:0;
+
+}
+
+h1{
+  margin:0;
+  padding:0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+  width:100vw;
+  height:100vh;
+  font-family: 'Lato', sans-serif;
+   background: linear-gradient(to bottom, rgb(35,255,141) 0%, rgb(48,140,103) 100%);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+
+#title{
+  font-size:12.5vh;
+  color:white;
+  font-weight:200;
+  text-align:center;
+}
+
+#nameForm{
+  height:5.5vh;
+  display: flex;
+  justify-content:center;
+  margin-top:10vw;
+}
+
+#nameInput{
+
+    margin-left: 1vw;
+    border-top: 0.25vw;
+    background-color:none;
+    color: white;
+    border-color: white;
+    border-width: 0.25vw;
+    border-image-slice: 1;
+    border-right-style: none;
+    border-left-style: none;
+    width: 20vw;
+    height: 5vh;
+    font-size: 5.5vh;
+    margin-right: 1vw;
+}
+#namePrompt{
+  font-weight:200;
+  color:white;
+}
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+#passwordForm{
+  height:5.5vh;
+  display: flex;
+  justify-content:center;
+  margin-top:10vw;
+}
+
+#passwordInput{
+
+    margin-left: 1vw;
+    border-top: 0.25vw;
+    background-color:none;
+    color: white;
+    border-color: white;
+    border-width: 0.25vw;
+    border-image-slice: 1;
+    border-right-style: none;
+    border-left-style: none;
+    width: 20vw;
+    height: 5vh;
+    font-size: 5.5vh;
+    margin-right: 1vw;
+}
+#passwordPrompt{
+  font-weight:200;
+  color:white;
+}
