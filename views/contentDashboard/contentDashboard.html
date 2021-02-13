@@ -1,0 +1,28 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="login.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1 id="title">Login</h1>
+    <div id="nameForm">
+      <h1 id="namePrompt">Name: </h1>
+      <input type="text" id="nameInput">
+      <h1 id="submitName" onclick="submitName()">✅</h1>
+
+    </div>
+
+     <div id="passwordForm">
+      <h1 id="passwordPrompt">Password: </h1>
+      <input type="text" id="passwordInput">
+      <h1 id="submitPassword" onclick="submitPassword()">✅</h1>
+
+   </div>
+     <script src="/socket.io/socket.io.js"></script>
+
+    <script src="login.js"></script>
+  </body>
+</html>

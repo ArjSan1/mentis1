@@ -14,9 +14,71 @@ app.get('/', (req, res) => {
 
 });
 
+/*app.get('/redirect', (req, res) => {
+
+    res.sendFile(__dirname+ '/views/index.html')
+})*/
 
 io.on('connection', (socket) => {
-    
+    console.log("A user has connected");
+    socket.on('userLogin', (name, password)=>{
+
+            console.log(name);
+            console.log(password);
+
+
+
+        MongoClient.connect(url, function(err, db) {
+
+  if (err) throw err;
+  var dbo = db.db("MentisCluster");
+  var query = { header: "signUp" };
+
+  dbo.collection("journals").find(query).toArray(function(err, result) {
+
+
+    if (err) throw err;
+    console.log(result);
+
+    for (i=0; i<(Object.keys(result).length);i++){
+
+
+      let compareToPassword = result[i]["password"];
+      let compareToName = result[i]["name"];
+
+      if (name==compareToName && password==compareToPassword){
+          console.log("Correct login info")
+          let validity = "correct";
+          let therapistNum = result[i]["therapistNum"]
+          socket.emit("validity", validity, name, therapistNum);
+      }else{
+
+
+
+
+      }
+      console.log(result[i]["name"]);
+      
+    }
+
+
+    db.close();
+
+
+  });
+});
+
+
+
+
+
+
+
+
+    }
+
+      
+    )
 });
 
 
