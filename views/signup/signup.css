@@ -69,7 +69,7 @@ input[type=text] {
   height:5.5vh;
   display: flex;
   justify-content:center;
-  margin-top:10vw;
+  margin-top:5vw;
 }
 
 #passwordInput{
@@ -91,4 +91,31 @@ input[type=text] {
 #passwordPrompt{
   font-weight:200;
   color:white;
+}
+
+#therapistNumForm{
+  height:5.5vh;
+  display: flex;
+  justify-content:center;
+  margin-top:5vw;
+}
+#therapistNumInput{
+   margin-left: 1vw;
+    border-top: 0.25vw;
+    background-color:none;
+    color: white;
+    border-color: white;
+    border-width: 0.25vw;
+    border-image-slice: 1;
+    border-right-style: none;
+    border-left-style: none;
+    width: 20vw;
+    height: 5vh;
+    font-size: 5.5vh;
+    margin-right: 1vw;
+}
+#therapistNumPrompt{
+   font-weight:200;
+   color:white;
+
 }
