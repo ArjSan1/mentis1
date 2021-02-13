@@ -3,6 +3,7 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 var mongo = require('mongodb');
+var io = require('socket.io')(server);
 
 var MongoClient = require('mongodb').MongoClient;
 app.use(express.static('views'));
@@ -12,6 +13,15 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 
 });
+
+
+io.on('connection', (socket) => {
+    
+});
+
+
+
+
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
@@ -45,7 +55,10 @@ MongoClient.connect(url, function(err, db) {
 })
 
 
-app.get("/loginInfo", (req, res)=>{
+/*app.get("/loginInfo", (req, res)=>{
+
+  let name = req.query.name;
+  let password = req.query.password;
 
   console.log(req.query.name);
   console.log(req.query.password);
@@ -54,7 +67,7 @@ app.get("/loginInfo", (req, res)=>{
 
 
   MongoClient.connect(url, function(err, db) {
-    
+
   if (err) throw err;
   var dbo = db.db("MentisCluster");
   var query = { header: "signUp" };
@@ -64,6 +77,22 @@ app.get("/loginInfo", (req, res)=>{
 
     if (err) throw err;
     console.log(result);
+
+    for (i=0; i<(Object.keys(result).length);i++){
+
+
+      let compareToPassword = result[i]["password"];
+      let compareToName = result[i]["name"];
+
+      if (name==compareToName && password==compareToPassword){
+
+
+      }
+      console.log(result[i]["name"]);
+      
+    }
+
+
     db.close();
 
 
@@ -74,7 +103,7 @@ app.get("/loginInfo", (req, res)=>{
 
 
 
-})
+})*/
 
 
 

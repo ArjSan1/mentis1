@@ -1,6 +1,7 @@
 let nameInput = document.getElementById('nameInput');
 let submitNameButton = document.getElementById('submitName');
 let namePrompt = document.getElementById('namePrompt');
+var socket = io();
 
 let passwordInput = document.getElementById('passwordInput');
 let submitPasswordButton = document.getElementById('submitPassword');
