@@ -35,3 +35,10 @@ function submitText() {
 
 
 }
+let message = document.getElementById("title")
+
+let name2 = localStorage.getItem("name");
+
+message.innerHTML = name2 + "'s Journal";
+
+socket.emit("retrieveJournalData", name);

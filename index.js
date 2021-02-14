@@ -39,74 +39,116 @@ let people = {}
 let tempName;
 let tempTherapistNum;
 io.on('connection', (socket) => {
-  socket.on('articleEntry', (date, text, name)=>{
-    let moodScore = sentiment.analyze(text).score;
-    console.log(sentiment.analyze(text).score);
 
-    let mood;
-    if (moodScore < -2){
+    socket.on('retrieveJournalData', (name) => {
+        console.log("Name to query: " + name)
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db("MentisCluster");
+            var query = {
+                header: "journal"
+            };
+            dbo.collection("journals").find(query).toArray(function(err, result) {
+                if (err) throw err;
+                let journalData = {}
+                x = -1;
+                for (i = 0; i < (Object.keys(result).length); i++) {
 
-      mood = "negative";
-    }else if (moodScore >=-2 && sentiment <= 2){
-      mood="neutral";
-    }else{
-      mood="positive";
-    }
+                    //console.log(result[i]);
+                    //console.log(result[i]['name']);
+                    if (result[i]['name'] == name) {
+                        x++;
+                        journalData[x] = result[i];
 
-    let journalEntry = {
-      "header": journal,
-      "text": text,
-      "mood": mood,
-      "name": name
 
+
+
+                    }
+                    console.log(journalData);
+
+
+
+
+                }
+
+                socket.emit('')
+                //console.log(result);
+                db.close();
+            });
+        });
+
+
+
+
+    })
+    socket.on('articleEntry', (date, text, name) => {
+        let moodScore = sentiment.analyze(text).score;
+        console.log(sentiment.analyze(text).score);
+
+        let mood;
+        if (moodScore < -2) {
+
+            mood = "negative";
+        } else if (moodScore >= -2 && moodScore <= 2) {
+            mood = "neutral";
+        } else {
+            mood = "positive";
+        }
+        console.log(mood);
+
+        let journalEntry = {
+            "header": "journal",
+            "text": text,
+            "mood": mood,
+            "name": name
+
+        }
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db("MentisCluster");
+
+            dbo.collection("journals").insertOne(journalEntry, function(err, res) {
+                if (err) throw err;
+                console.log("Entry has been inputted!");
+                db.close();
+            });
+        });
+
+
+    })
+
+});
+
+
+
+
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
+});
+
+
+app.get("/signUpInfo", (req, res) => {
+
+    let signUp = {
+        header: "signUp",
+        name: req.query.name,
+        password: req.query.password,
+        therapistNum: req.query.therapistNum
     }
 
     MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("MentisCluster");
- 
-  dbo.collection("journals").insertOne(journalEntry, function(err, res) {
-    if (err) throw err;
-    console.log("Entry has been inputted!");
-    db.close();
-  });
-});
+        if (err) throw err;
+        var dbo = db.db("MentisCluster");
 
-
-  })
-    
-});
-
-
-
-
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
-
-
-app.get("/signUpInfo", (req, res)=>{
-
-  let signUp = {
-    header: "signUp",
-    name:req.query.name,
-    password:req.query.password,
-    therapistNum:req.query.therapistNum
-  }
-  
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("MentisCluster");
- 
-  dbo.collection("journals").insertOne(signUp, function(err, res) {
-    if (err) throw err;
-    console.log("Sign-Up Info acquired!");
-    db.close();
-  });
-});
+        dbo.collection("journals").insertOne(signUp, function(err, res) {
+            if (err) throw err;
+            console.log("Sign-Up Info acquired!");
+            db.close();
+        });
+    });
 
 
 
@@ -162,7 +204,6 @@ MongoClient.connect(url, function(err, db) {
 
 
 })*/
-
 
 
 
