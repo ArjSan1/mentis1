@@ -1,0 +1,86 @@
+
+*{
+  margin:0;
+  padding:0;
+}
+p{
+  margin:0;
+  padding:0;
+
+}
+
+h1{
+  margin:0;
+  padding:0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+  width:100vw;
+  height:100vh;
+  font-family: 'Lato', sans-serif;
+   background: linear-gradient(to bottom, rgb(35,255,141) 0%, rgb(48,140,103) 100%);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+
+#title{
+
+  text-align:center;
+  font-size:15vh;
+    color:rgb(41,54,79);
+
+
+}
+
+a{
+  text-decoration:none;
+}
+
+#journalInput{
+  width:50vw;
+  height:35vh;
+  margin-left:25vw;
+}
+
+textarea{
+  resize:none;
+  font-size:5vh;
+}
+#container{
+  display:flex;
+}
+#submit{
+
+
+   background:white;
+  font-weight:500;
+  font-size:1vw;
+  padding:none;
+  border:none;
+  height:4.0vh;
+  width:5vw;
+  font-family: 'Noto Sans SC', sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top:31vh;
+  margin-left:3vw;
+}
+
+.dataEntry{
+  margin-top:5vh;
+  width:50vw;
+  margin-left:25vw;
+  height:20vh;
+  background-color:rgb(41,54,79);
+  overflow-y:scroll;
+
+}
+
+.data{
+  margin-left:0.125vw;
+  margin-top:0.125vh;
+  color:white;
+}

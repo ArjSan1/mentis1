@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="journal.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+		<h1 id="title">Journal</h1>
+    <div id="container">
+      <textarea id="journalInput">
+
+      </textarea>
+      <button type="button" id="submit" onclick="submitText()">Submit</button>
+    </div>
+
+    <div class="dataEntry">
+      <p class="data">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat ligula ut est pretium varius. In eu nisi ac lectus iaculis ultricies. Maecenas libero ex, volutpat ut lacinia eget, lobortis sodales ipsum. Quisque placerat augue quis ipsum pellentesque blandit. Proin arcu mauris, maximus sit amet turpis non, consequat eleifend neque. Sed eu libero lorem. Etiam lobortis iaculis eros, sed finibus neque viverra eget. Duis venenatis eget ex eu vulputate. Cras tortor nulla, malesuada vitae purus in, accumsan pulvinar massa. Quisque sollicitudin scelerisque lacinia. Curabitur dapibus luctus nisi eu convallis.
+
+</p>
+
+    </div>
+		
+    
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="journal.js"></script>
+  </body>
+</html>
