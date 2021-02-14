@@ -7,13 +7,19 @@ let passwordInput = document.getElementById('passwordInput');
 let submitPasswordButton = document.getElementById('submitPassword');
 let passwordPrompt = document.getElementById('passwordPrompt');
 
-let therapistNumInput = document.getElementById("therapistNumInput") 
-let submitTherapistNumButton = document.getElementById("submitTherapistNum")
-let therapistNumPrompt = document.getElementById("therapistNumPrompt")
+let therapistNumInput = document.getElementById("therapistNumInput"); 
+let submitTherapistNumButton = document.getElementById("submitTherapistNum");
+let therapistNumPrompt = document.getElementById("therapistNumPrompt");
+
+let patientNumInput = document.getElementById("patientNumInput");
+let submitPatientNumButton = document.getElementById("submitPatientNum");
+let patientNumPrompt = document.getElementById("patientNumPrompt");
+
 
 let name;
 let password;
 let therapistNum;
+let patientNum;
 
 
 function submitName() {
@@ -54,11 +60,22 @@ function submitTherapistNum(){
   submitTherapistNumButton.style.display="none";
   therapistNumPrompt.innerHTML="Therapist Number Submitted!"
     localStorage.setItem("therapistNum", therapistNum);
+}
+    
+function submitPatientNum(){
+  patientNum = patientNumInput.value;
+  //console.log(patientNum);
+  patientNumInput.value="";
+  patientNumInput.style.display="none";
+  submitPatientNumButton.style.display="none";
+  patientNumPrompt.innerHTML="Patient Number Submitted!"
+    localStorage.setItem("patientNum", patientNum);
 
-    if (name != "" && password != "" && therapistNum != ""){
+
+    if (name != "" && password != "" && therapistNum != "" && patientNum != ""){
 
 
-  fetch("/signUpInfo?name="+name+"&password="+password+"&therapistNum="+therapistNum)
+  fetch("/signUpInfo?name="+name+"&password="+password+"&therapistNum="+therapistNum + "&patientNum" + patientNum)
   .then(response => response.json())
   .then(data => console.log(data));
 

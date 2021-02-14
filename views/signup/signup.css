@@ -119,3 +119,30 @@ input[type=text] {
    color:white;
 
 }
+
+#patientNumForm{
+  height:5.5vh;
+  display: flex;
+  justify-content:center;
+  margin-top:5vw;
+}
+#patientNumInput{
+   margin-left: 1vw;
+    border-top: 0.25vw;
+    background-color:none;
+    color: white;
+    border-color: white;
+    border-width: 0.25vw;
+    border-image-slice: 1;
+    border-right-style: none;
+    border-left-style: none;
+    width: 20vw;
+    height: 5vh;
+    font-size: 5.5vh;
+    margin-right: 1vw;
+}
+#patientNumPrompt{
+   font-weight:200;
+   color:white;
+
+}

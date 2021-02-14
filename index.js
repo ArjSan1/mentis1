@@ -71,7 +71,7 @@ io.on('connection', (socket) => {
 
                 }
 
-                socket.emit('')
+                socket.emit('articlesSent', journalData);
                 //console.log(result);
                 db.close();
             });
@@ -100,7 +100,8 @@ io.on('connection', (socket) => {
             "header": "journal",
             "text": text,
             "mood": mood,
-            "name": name
+            "name": name,
+            "date": date
 
         }
 
@@ -136,7 +137,8 @@ app.get("/signUpInfo", (req, res) => {
         header: "signUp",
         name: req.query.name,
         password: req.query.password,
-        therapistNum: req.query.therapistNum
+        therapistNum: req.query.therapistNum,
+        patientNum: req.query.patientNum
     }
 
     MongoClient.connect(url, function(err, db) {
