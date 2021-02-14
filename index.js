@@ -30,8 +30,7 @@ app.get('/', (req, res) => {
 
 });
 
-const accountSid = 'AC519b280e3d8ccf5ba059fb5eabe47c2e'; 
-const authToken = '3a1527339d3662485d0cfca6cd40eb71'; 
+
 const client = require('twilio')(accountSid, authToken); 
  
 client.messages 
