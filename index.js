@@ -4,10 +4,26 @@ const http = require("http");
 const server = http.createServer(app);
 var mongo = require('mongodb');
 var io = require('socket.io')(server);
+var Sentiment = require('sentiment');
+
+var sentiment = new Sentiment();
+
 
 var MongoClient = require('mongodb').MongoClient;
 app.use(express.static('views'));
 var url = "mongodb+srv://mentisUsername:mentisPassword@mentiscluster.dx0bc.mongodb.net/MentisCluster?retryWrites=true&w=majority"
+
+/*MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("MentisCluster");
+  
+  dbo.collection("journals").deleteMany(function(err, obj) {
+    if (err) throw err;
+    console.log(obj.result.n + " document(s) deleted");
+    db.close();
+  });
+});*/
+
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
@@ -23,88 +39,42 @@ let people = {}
 let tempName;
 let tempTherapistNum;
 io.on('connection', (socket) => {
-    console.log("A user has connected");
-    socket.on('requestPersonalData', (data)=>{
-          socket.emit("personalData", people);
+  socket.on('articleEntry', (date, text, name)=>{
+    let moodScore = sentiment.analyze(text).score;
+    console.log(sentiment.analyze(text).score);
 
+    let mood;
+    if (moodScore < -2){
 
-      })
-    socket.on('dashboardUpdate', (name, therapistNum)=>{
-      counter = counter + 1;
-      tempName = name;
-      tempTherapistNum = therapistNum;
-      let individual = {"name": name, "therapistNum": therapistNum}
-      people[counter]=individual;
-      console.log("Dashboard has been called");
-      
-      //console.log(name);
-      //console.log(therapistNum);
-
-
-    })
-    socket.on('userLogin', (name, password)=>{
-
-            console.log(name);
-            console.log(password);
-
-
-
-        MongoClient.connect(url, function(err, db) {
-
-  if (err) throw err;
-  var dbo = db.db("MentisCluster");
-  var query = { header: "signUp" };
-
-  dbo.collection("journals").find(query).toArray(function(err, result) {
-
-
-    if (err) throw err;
-    console.log(result);
-
-    for (i=0; i<(Object.keys(result).length);i++){
-
-      
-      let compareToPassword = result[i]["password"];
-      let compareToName = result[i]["name"];
-
-      if (name==compareToName && password==compareToPassword){
-          console.log("Correct login info")
-          console.log("match found")
-          let validity = "correct";
-          let therapistNum = result[i]["therapistNum"]
-          socket.emit("validity", validity, name, therapistNum);
-          break;
-      }else{
-        /*let validity = "false";
-        name = null;
-        therapistNum = null;
-        socket.emit("validity", validity, name, therapistNum);*/
-
-
-
-      }
-      console.log(result[i]["name"]);
-      
+      mood = "negative";
+    }else if (moodScore >=-2 && sentiment <= 2){
+      mood="neutral";
+    }else{
+      mood="positive";
     }
 
+    let journalEntry = {
+      "header": journal,
+      "text": text,
+      "mood": mood,
+      "name": name
 
+    }
+
+    MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("MentisCluster");
+ 
+  dbo.collection("journals").insertOne(journalEntry, function(err, res) {
+    if (err) throw err;
+    console.log("Entry has been inputted!");
     db.close();
-
-
   });
 });
 
 
-
-
-
-
-
-
-    }
-
-      
-    )
+  })
+    
 });
 
 
