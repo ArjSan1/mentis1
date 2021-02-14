@@ -1,12 +1,6 @@
 var socket = io();
 let message = document.getElementById("welcome")
-console.log('asd');
 
-console.log(socket);
-socket.emit('requestPersonalData', 1);
+let name = localStorage.getItem("name");
 
-
-socket.on('personalData', (name)=>{ 
-  console.log(name);
-
-})                      
+message.innerHTML = "Welcome back, "+name+".";

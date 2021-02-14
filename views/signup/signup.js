@@ -18,11 +18,12 @@ let therapistNum;
 
 function submitName() {
   name = nameInput.value;
+  
   console.log(name);
   nameInput.style.display="none";
   submitNameButton.style.display = "none";
   namePrompt.innerHTML="Name submitted!";
-  
+  localStorage.setItem("name", name);
 /*fetch("/signUpInfo?name="+name)
   .then(response => response.json())
   .then(data => console.log(data));*/
@@ -33,6 +34,8 @@ function submitName() {
 function submitPassword(){
   
   password = passwordInput.value;
+    localStorage.setItem("password", password);
+
   console.log(password);
   passwordInput.style.display="none";
   submitPasswordButton.style.display="none";
@@ -50,6 +53,7 @@ function submitTherapistNum(){
   therapistNumInput.style.display="none";
   submitTherapistNumButton.style.display="none";
   therapistNumPrompt.innerHTML="Therapist Number Submitted!"
+    localStorage.setItem("therapistNum", therapistNum);
 
     if (name != "" && password != "" && therapistNum != ""){
 
