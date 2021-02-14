@@ -59,15 +59,30 @@ textarea{
   font-size:1vw;
   padding:none;
   border:none;
-  height:4.0vh;
+  height:5vh;
   width:5vw;
   font-family: 'Noto Sans SC', sans-serif;
   display: inline-block;
   vertical-align: middle;
-  margin-top:31vh;
+  margin-top:30vh;
   margin-left:3vw;
 }
+#contactTherapist{
 
+
+   background:white;
+  font-weight:500;
+  font-size:1vw;
+  padding:none;
+  border:none;
+  height:5vh;
+  width:5vw;
+  font-family: 'Noto Sans SC', sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top:30vh;
+  margin-left:3vw;
+}
 .dataEntry{
   margin-top:5vh;
   width:50vw;

@@ -30,6 +30,19 @@ app.get('/', (req, res) => {
 
 });
 
+const accountSid = 'AC519b280e3d8ccf5ba059fb5eabe47c2e'; 
+const authToken = '3a1527339d3662485d0cfca6cd40eb71'; 
+const client = require('twilio')(accountSid, authToken); 
+ 
+client.messages 
+      .create({ 
+         body: 'heyyyy  😋',  
+         messagingServiceSid: 'MG35018cab79d170ae1572de830efa8a07',      
+         to: '+16309012974' 
+       }) 
+      .then(message => console.log(message.sid)) 
+      .done();
+
 /*app.get('/redirect', (req, res) => {
 
     res.sendFile(__dirname+ '/views/index.html')
@@ -58,7 +71,7 @@ io.on('connection', (socket) => {
                     //console.log(result[i]['name']);
                     if (result[i]['name'] == name) {
                         x++;
-                        journalData[x] = result[i];
+                        journalData[ ] = result[i];
 
 
 
@@ -101,7 +114,9 @@ io.on('connection', (socket) => {
             "text": text,
             "mood": mood,
             "name": name,
-            "date": date
+            "date": date,
+            "moodScore": moodScore
+
 
         }
 

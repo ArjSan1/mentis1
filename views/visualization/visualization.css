@@ -1,0 +1,98 @@
+*{
+  margin:0;
+  padding:0;
+}
+p{
+  margin:0;
+  padding:0;
+
+}
+
+h1{
+  margin:0;
+  padding:0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+  width:100vw;
+  height:100vh;
+  font-family: 'Lato', sans-serif;
+   background: linear-gradient(to bottom, rgb(35,255,141) 0%, rgb(48,140,103) 100%);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: hidden;
+}
+
+#vector{
+   position:absolute;
+   right:0;
+   bottom:-10vh; 
+
+}
+#flexTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:2.5vh;
+
+}
+
+#signup{
+  margin-left:2vw;
+  font-size:10vh;
+  color:white;
+  font-weight:100;
+}
+#login{
+  margin-left:2vw;
+  font-size:10vh;
+  color:rgb(254,216,138);
+  font-weight:100;
+}
+
+#navLinks{
+  display:flex;
+  margin-right:5vw;
+  
+}
+#mentis{
+
+
+  color:rgb(41,54,79);
+  margin-left:3vw;
+  font-size:15vh;
+}
+#Revolutionizing{
+  color:white;
+  margin-left:3vw;
+  margin-top:17.5vh;
+  
+  font-size: 12vh;
+  font-weight:100; 
+  margin-left:2.5vw;
+  
+}
+
+#rcontainer{
+  width: 100vh;
+
+}
+
+
+a{
+  text-decoration:none;
+}
+
+#chart{
+  margin-top:25vh;
+}
+
+#title{
+ text-align:center;
+  font-size:15vh;
+    color:rgb(41,54,79);
+
+
+}

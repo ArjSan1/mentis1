@@ -3,7 +3,7 @@ let name = localStorage.getItem("name");
 //let box = document.getElementsByClassName("dataEntry");
 //let pStyle = document.getElementByC
 var socket = io();
-
+let obj;
 let text;
 
 let dataSection = document.getElementById("dataSection");
@@ -44,7 +44,7 @@ message.innerHTML = name2 + "'s Journal";
 socket.emit("retrieveJournalData", name);
 
 socket.on('articlesSent', (data)=>{
-
+  obj = data;
   for (i = 0; i < (Object.keys(data).length); i++) {
 
       let date = data[i]["date"];
@@ -68,3 +68,34 @@ socket.on('articlesSent', (data)=>{
   console.log(data);
 })
 
+function contactTherapist(){
+    console.log(obj);
+    let msList = [];
+    
+    let moodScoresMessage = "Current MoodScores are: "
+    for (i = 0; i < (Object.keys(obj).length); i++) {
+
+      msList.push(obj[i]["moodScore"]);
+
+
+
+
+
+
+
+
+    }
+    for (i=0; i<msList.length; i++){
+      moodScoresMessage = moodScoresMessage+msList[i]+", "
+      if (i+1==msList.length){
+        moodScoresMessage = moodScoresMessage+msList[i]
+        break;
+      }
+      
+
+
+    }console.log(moodScoresMessage);
+
+
+
+}

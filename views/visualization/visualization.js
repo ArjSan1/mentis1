@@ -1,59 +1,45 @@
-var ctx = document.getElementById('myChart').getContext('2d');
 let name = localStorage.getItem('name');
 var socket = io();
-
+let xlabels = [];
+let ytemps = [];
+ytemps.push('Mood Scores Over the Past Week');
 socket.emit('retrieveJournalData', name);
-
-let labels = [];
-let data = [];
 socket.on('articlesSent', (info)=>{
-    for (i = 0; i < (Object.keys(info).length); i++) {
-
-      labels.push(info[i]["date"]);
-      data.push(info[i]["moodScore"]);
-      
+    console.log("i am here now, when does this print?");
+    for (i = 0; i < (Object.keys(info).length); i++) {//ok
+      xlabels.push(info[i]["date"]);
+      ytemps.push(info[i]["moodScore"]);
 
     }
-    console.log(labels);
-    console.log(data);
+    console.log(ytemps);
+    //console.log(ytemps[1]);
 
-
-
-})
-
-var myChart = new Chart(ctx, {
-  
-    type: 'bar',
+var chart = c3.generate({
     data: {
-
-
-
-        labels,
-        datasets: [{
-            label: 'Moodscore',
-            data: [0,-34,84],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
-               
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)'
-                
-            ],
-            borderWidth: 1
-        }]
+        columns: [
+            ytemps
+        ],
+        type: 'bar',
+        
     },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+    bar: {
+        width: {
+            ratio: 0.5 // this makes bar width 50% of length between ticks
         }
+        // or
+        //width: 100 // this makes bar width 100px
     }
 });
+
+});
+let bruh = [ytemps[0],ytemps[1],ytemps[2],ytemps[3]];
+console.log(bruh);
+console.log(bruh[0])
+console.log(ytemps);
+console.log(ytemps[0]);
+console.log(ytemps[1]);
+console.log(ytemps[2]);
+console.log(ytemps[3]);
+console.log(ytemps[4]);
+
+
