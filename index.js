@@ -18,11 +18,25 @@ app.get('/', (req, res) => {
 
     res.sendFile(__dirname+ '/views/index.html')
 })*/
-
+let counter = -1;
+let people = {}
+let tempName;
+let tempTherapistNum;
 io.on('connection', (socket) => {
     console.log("A user has connected");
-    socket.on('dashboardUpdate', (name, therapistNum)=>{
+    socket.on('requestPersonalData', (data)=>{
+          socket.emit("personalData", people);
 
+
+      })
+    socket.on('dashboardUpdate', (name, therapistNum)=>{
+      counter = counter + 1;
+      tempName = name;
+      tempTherapistNum = therapistNum;
+      let individual = {"name": name, "therapistNum": therapistNum}
+      people[counter]=individual;
+      console.log("Dashboard has been called");
+      
       //console.log(name);
       //console.log(therapistNum);
 

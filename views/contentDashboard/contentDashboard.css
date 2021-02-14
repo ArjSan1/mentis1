@@ -33,19 +33,18 @@ body{
 }
 #flexTop{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-top:2.5vh;
+  margin-top:2vh;
 
 }
 
-#signup{
+#calendar{
   margin-left:2vw;
   font-size:10vh;
   color:white;
   font-weight:100;
 }
-#login{
+#journal{
   margin-left:2vw;
   font-size:10vh;
   color:rgb(254,216,138);
@@ -55,19 +54,20 @@ body{
 #navLinks{
   display:flex;
   margin-right:5vw;
+  margin-top:2vh;
   
 }
-#mentis{
+#welcome{
 
 
   color:rgb(41,54,79);
   margin-left:3vw;
   font-size:15vh;
 }
-#Revolutionizing{
+#start{
   color:white;
   margin-left:3vw;
-  margin-top:17.5vh;
+  margin-top:11.5vh;
   
   font-size: 12vh;
   font-weight:100; 
@@ -75,8 +75,8 @@ body{
   
 }
 
-#rcontainer{
-  width: 100vh;
+#scontainer{
+  width: 150vh;
 
 }
 

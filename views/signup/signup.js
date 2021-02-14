@@ -58,6 +58,9 @@ function submitTherapistNum(){
   .then(response => response.json())
   .then(data => console.log(data));
 
+        window.location.replace("https://mentis.ibrahimshah.repl.co");
+
+
 }
    
 }
