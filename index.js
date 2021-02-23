@@ -30,17 +30,20 @@ app.get('/', (req, res) => {
 
 });
 
+var twilio = require('twilio')
+const accountSid = 'AC519b280e3d8ccf5ba059fb5eabe47c2e'; 
+const authToken = 'da5389df77909484e8db8ad1bbdd158a'; 
 
 const client = require('twilio')(accountSid, authToken); 
  
-client.messages 
+/*client.messages 
       .create({ 
          body: 'heyyyy  😋',  
          messagingServiceSid: 'MG35018cab79d170ae1572de830efa8a07',      
          to: '+16309012974' 
        }) 
       .then(message => console.log(message.sid)) 
-      .done();
+      .done();*/
 
 /*app.get('/redirect', (req, res) => {
 
@@ -51,7 +54,22 @@ let people = {}
 let tempName;
 let tempTherapistNum;
 io.on('connection', (socket) => {
+    socket.on('sendTextMessageBody', (message, therapistPhoneNumber)=>{
 
+      console.log(therapistPhoneNumber);
+      console.log(message);
+      client.messages 
+      .create({ 
+         body: message,  
+         messagingServiceSid: 'MG35018cab79d170ae1572de830efa8a07',      
+         to: '+'+therapistPhoneNumber 
+       }) 
+      .then(message => console.log(message.sid)) 
+      .done();
+
+      
+
+    })
     socket.on('retrieveJournalData', (name) => {
         console.log("Name to query: " + name)
         MongoClient.connect(url, function(err, db) {
@@ -70,7 +88,7 @@ io.on('connection', (socket) => {
                     //console.log(result[i]['name']);
                     if (result[i]['name'] == name) {
                         x++;
-                        journalData[ ] = result[i];
+                        journalData[x] = result[i];
 
 
 
